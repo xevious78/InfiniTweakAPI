@@ -84,10 +84,11 @@ None
 
 > Errors
  
- 
-Code | Meaning | Reason
---------- | ------- | -----------
-`200` | `Success` | 
+```
+ENGINE_CLOSED: The engine is closed
+UNKNOWN_ERROR
+
+```
 
 
 Start the audio rendering process
