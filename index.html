@@ -41,11 +41,11 @@
 <h2 id="response-structure">Response Structure</h2>
 
 <blockquote>
-<p>Successful query without response </p>
+<p>Successful query without result </p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="w">
+    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -54,7 +54,7 @@
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"RESULT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OBJ:RESULT&gt;</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -64,7 +64,7 @@
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"RESULT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">FALSE</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"RESULT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"REASON"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:ERROR&gt;</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -128,12 +128,18 @@ UNKNOWN_ERROR
 <h2 id="engine-pause">Engine : Pause</h2>
 
 <blockquote>
-<p>The result if it works : </p>
+<p>Result</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight plaintext"><code>None
+</code></pre>
 
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<blockquote>
+<p>Errors</p>
+</blockquote>
+<pre class="highlight plaintext"><code>ENGINE_CLOSED: The engine is currently closed
+UNKNOWN_ERROR
+
+</code></pre>
 
 <p>Pause the audio rendering process</p>
 
@@ -144,12 +150,17 @@ UNKNOWN_ERROR
 <h2 id="engine-close">Engine : Close</h2>
 
 <blockquote>
-<p>The result if it works : </p>
+<p>Result</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight plaintext"><code>None
+</code></pre>
 
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<blockquote>
+<p>Errors</p>
+</blockquote>
+<pre class="highlight plaintext"><code>UNKNOWN_ERROR
+
+</code></pre>
 
 <p>Stop the engine and remove all the I/O devices.</p>
 
@@ -157,15 +168,24 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/close</code></p>
 
+<aside class="warning">Doesn&rsquo;t work</aside>
+
 <h2 id="files-plugins">Files : Plugins</h2>
 
 <blockquote>
-<p>The result if it works : </p>
+<p>Result</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<blockquote>
+<p>Errors</p>
+</blockquote>
+<pre class="highlight plaintext"><code>UNKNOWN_ERROR
+
+</code></pre>
 
 <p>Get all the plugins located in the device drive.</p>
 
