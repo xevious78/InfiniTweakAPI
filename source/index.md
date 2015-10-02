@@ -225,9 +225,7 @@ Load and add a plugin to the patchbay
 
 `POST http://InfiniTweak/api/plugins`
 
-#### Query Parameters
-
-##### Body
+#### Body Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -249,13 +247,16 @@ Error | Reason
 
 ## Plugin : Remove 
 
+<aside class="warning">No tested</aside>
+
+
 Remove a plugin from the patchbay 
 
 ### HTTP Request
 
 `DELETE http://InfiniTweak/api/plugins/<pluginId>`
 
-#### URL
+#### URL Parameters
 
 
 Parameter | Type | Description
@@ -282,9 +283,7 @@ Get info on a plugin
 
 `GET http://InfiniTweak/api/plugins/<pluginId>`
 
-#### Query Parameters
-
-##### URL
+#### URL Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -302,20 +301,22 @@ Error | Reason
 
 ## Plugin : Set parameter value
 
+<aside class="warning">Not tested</aside>
+
+
 ### HTTP Request
 
 `PUT http://InfiniTweak/api/plugins/<pluginId>/<parameter>`
 
-#### Query Parameters
 
-##### URL
+#### URL Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `pluginId` | `Int` | 
 `parameter` | <ul><li>`active` <li> `volume` <li> `<Int:parameterId>`</ul> 
 
-##### BODY
+#### Body Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -333,6 +334,8 @@ Error | Reason
 
 ## Plugin : Show UI
 
+<aside class="warning">UI blocks server thread</aside>
+
 
 Show a plugin's UI
 
@@ -340,10 +343,8 @@ Show a plugin's UI
 
 `GET http://InfiniTweak/api/plugins/<pluginId>/UI`
 
-#### Query Parameters
 
-
-##### URL
+#### URL Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -369,9 +370,7 @@ Connect two devices/plugins
 
 `POST http://InfiniTweak/api/patchbay/connections`
 
-#### Query Parameters
-
-##### BODY
+#### Body Parameters
 
 
 Parameter | Type | Description
@@ -401,11 +400,9 @@ Remove a connection between two devices/plugins
 
 ### HTTP Request
 
-`DELETE http://InfiniTweak/api/patchbay/connections`
+`DELETE http://InfiniTweak/api/patchbay/connections/<connectionId>`
 
-#### Query Parameters
-
-##### BODY
+#### URL Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -429,9 +426,34 @@ Error | Reason
 
 # WebSocket Callback
 
+## Engine : Started
+
+### Callback Message
+```
+ENGINE_INITIALIZED
+```
+
+
+#### Results
+
+None
+
+## Engine : Closed
+
+### Callback Message
+```
+ENGINE_CLOSED
+```
+
+
+#### Results
+
+None
+
 
 
 ## Plugin : Added
+
 
 ### Callback Message
 ```
@@ -443,6 +465,72 @@ PLUGIN_ADDED
 Parameter | Type | Description
 --------- | ------- | -----------
 `pluginId`| `Int` | 
-`pluginName`| `Int` | 
+`pluginName`| `Str` | Plugin Name
+
+
+## Patchbay : Client Added
+
+### Callback Message
+```
+PATCHBAY_CLIENT_ADDED
+```
+
+#### Results
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`clientId`| `Int` | 
+`clientIcon`| `Int` | 
+`clientName`| `Str` | Plugin Name
+`pluginId`| `Int` | <ul><li> `-1` : Not a plugin, look at `clientId` <li> `<int>` : Plugin ID</ul>
+
+## Plugin : Port Added
+
+### Callback Message
+```
+PATCHBAY_PORT_ADDED
+```
+
+#### Results
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`portName`| `Str` | 
+`portId`| `Int` : Port ID | 
+`clientId`| `Int` | 
+`portFlag`| `Int` | Compatibility 
+
+## Patchbay : Connection Added
+
+### Callback Message
+```
+PATCHBAY_CONNECTION_ADDED
+```
+
+#### Results
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`connectionId`| `Str` | 
+`clientOutId`| `Int` | 
+`portOutId`| `Int` | 
+`clientInId`| `Int` | 
+`portInId`| `Int` | 
+
+## Patchbay : Connection Removed
+
+### Callback Message
+```
+PATCHBAY_CONNECTION_REMOVED
+```
+
+#### Results
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`conenctionId`| `Str` | 
+`portOutId`| `Int` | 
+`portInId`| `Int` | 
+
 
 
