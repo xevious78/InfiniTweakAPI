@@ -44,17 +44,66 @@
 
 <p>Welcome to the InfiniTweak API !</p>
 
+<p><code class="prettyprint">API_VERSION = 0.1</code></p>
+
+<h2 id="response-structure">Response Structure</h2>
+
+<blockquote>
+<p>Successful query without response </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful query with result </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"SUCCESSFUL"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"RESULT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OBJ:RESULT&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Unsuccessful action</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"RESULT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">FALSE</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"REASON"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:ERROR&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="status-codes">Status Codes</h3>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">200</code></td>
+<td><code class="prettyprint">Success</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="callback-structure">Callback Structure</h2>
+
 <h1 id="rest-api-requests">REST API Requests</h1>
 
 <h2 id="engine-init">Engine : Init</h2>
 
 <blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<p>No result</p>
 
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p>Error Code </p>
+</blockquote>
 
 <p>Create the I/O devices.</p>
 
@@ -65,12 +114,8 @@
 <h2 id="engine-start">Engine : Start</h2>
 
 <blockquote>
-<p>The result if it works : </p>
+<p>No result</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Start the audio rendering process</p>
 
@@ -94,7 +139,7 @@
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/pause</code></p>
 
-<h2 id="engine-pause">Engine : Pause</h2>
+<h2 id="engine-close">Engine : Close</h2>
 
 <blockquote>
 <p>The result if it works : </p>
