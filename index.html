@@ -342,9 +342,7 @@
 
 <p><code class="prettyprint">POST http://InfiniTweak/api/plugins</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="body">Body</h5>
+<h4 id="body-parameters">Body Parameters</h4>
 
 <table><thead>
 <tr>
@@ -400,13 +398,15 @@
 
 <h2 id="plugin-remove">Plugin : Remove</h2>
 
+<aside class="warning">No tested</aside>
+
 <p>Remove a plugin from the patchbay </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
 
-<h4 id="url">URL</h4>
+<h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
@@ -448,9 +448,7 @@
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="url">URL</h5>
+<h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
@@ -486,13 +484,13 @@
 
 <h2 id="plugin-set-parameter-value">Plugin : Set parameter value</h2>
 
+<aside class="warning">Not tested</aside>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">PUT http://InfiniTweak/api/plugins/&lt;pluginId&gt;/&lt;parameter&gt;</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="url">URL</h5>
+<h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
@@ -513,7 +511,7 @@
 </tr>
 </tbody></table>
 
-<h5 id="body">BODY</h5>
+<h4 id="body-parameters">Body Parameters</h4>
 
 <table><thead>
 <tr>
@@ -549,15 +547,15 @@
 
 <h2 id="plugin-show-ui">Plugin : Show UI</h2>
 
+<aside class="warning">UI blocks server thread</aside>
+
 <p>Show a plugin&rsquo;s UI</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;/UI</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="url">URL</h5>
+<h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
@@ -599,9 +597,7 @@
 
 <p><code class="prettyprint">POST http://InfiniTweak/api/patchbay/connections</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="body">BODY</h5>
+<h4 id="body-parameters">Body Parameters</h4>
 
 <table><thead>
 <tr>
@@ -656,11 +652,9 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://InfiniTweak/api/patchbay/connections</code></p>
+<p><code class="prettyprint">DELETE http://InfiniTweak/api/patchbay/connections/&lt;connectionId&gt;</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
-
-<h5 id="body">BODY</h5>
+<h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
@@ -696,6 +690,26 @@
 
 <h1 id="websocket-callback">WebSocket Callback</h1>
 
+<h2 id="engine-started">Engine : Started</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>ENGINE_INITIALIZED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<p>None</p>
+
+<h2 id="engine-closed">Engine : Closed</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>ENGINE_CLOSED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<p>None</p>
+
 <h2 id="plugin-added">Plugin : Added</h2>
 
 <h3 id="callback-message">Callback Message</h3>
@@ -718,6 +732,154 @@
 </tr>
 <tr>
 <td><code class="prettyprint">pluginName</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td>Plugin Name</td>
+</tr>
+</tbody></table>
+
+<h2 id="patchbay-client-added">Patchbay : Client Added</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>PATCHBAY_CLIENT_ADDED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">clientId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">clientIcon</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">clientName</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td>Plugin Name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td><ul><li> <code class="prettyprint">-1</code> : Not a plugin, look at <code class="prettyprint">clientId</code> <li> <code class="prettyprint">&lt;int&gt;</code> : Plugin ID</ul></td>
+</tr>
+</tbody></table>
+
+<h2 id="plugin-port-added">Plugin : Port Added</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>PATCHBAY_PORT_ADDED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">portName</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portId</code></td>
+<td><code class="prettyprint">Int</code> : Port ID</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">clientId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portFlag</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td>Compatibility</td>
+</tr>
+</tbody></table>
+
+<h2 id="patchbay-connection-added">Patchbay : Connection Added</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>PATCHBAY_CONNECTION_ADDED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">connectionId</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">clientOutId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portOutId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">clientInId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portInId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="patchbay-connection-removed">Patchbay : Connection Removed</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>PATCHBAY_CONNECTION_REMOVED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">conenctionId</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portOutId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">portInId</code></td>
 <td><code class="prettyprint">Int</code></td>
 <td></td>
 </tr>
