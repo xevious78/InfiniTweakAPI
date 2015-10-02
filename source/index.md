@@ -15,21 +15,59 @@ search: true
 
 Welcome to the InfiniTweak API !
 
+`API_VERSION = 0.1`
 
+## Response Structure
+
+
+> Successful query without response 
+
+```json
+{
+	"API" : <STR:API_VERSION>,
+	"SUCCESSFUL" : TRUE
+}
+```
+
+> Successful query with result 
+
+```json
+{
+	"API" : <STR:API_VERSION>,
+	"SUCCESSFUL" : TRUE,
+	"RESULT" : <OBJ:RESULT>
+}
+```
+
+
+
+> Unsuccessful action
+
+```json
+{
+	"API" : <STR:API_VERSION>,
+	"RESULT" : FALSE,
+	"REASON" : <STR:ERROR>
+}
+```
+
+
+
+### Status Codes
+
+Code | Meaning | Reason
+--------- | ------- | -----------
+`200` | `Success` | 
+
+## Callback Structure
 
 # REST API Requests
 
 ## Engine : Init
 
+> No result
 
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
+> Error Code 
 
 Create the I/O devices.
 
@@ -41,13 +79,7 @@ Create the I/O devices.
 ## Engine : Start
 
 
-> The result if it works : 
-
-```json
-{
-	
-}
-```
+> No result
 
 Start the audio rendering process
 
@@ -72,7 +104,7 @@ Pause the audio rendering process
 
 `GET http://InfiniTweak/api/engine/pause`
 
-## Engine : Pause
+## Engine : Close
 
 
 > The result if it works : 
