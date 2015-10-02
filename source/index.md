@@ -2,8 +2,6 @@
 title: InfiniTweak API Reference
 
 
-toc_footers:
-
 
 search: true
 ---
@@ -37,7 +35,6 @@ Welcome to the InfiniTweak API !
 ```
 
 
-
 > Unsuccessful action
 
 ```json
@@ -58,13 +55,29 @@ Code | Meaning | Reason
 
 ## Callback Structure
 
+
+> Callback Structure without details
+
+```json
+{
+	"API" : <STR:API_VERSION>,
+	"CALLBACK" : <STR:CALLBACK_MESSAGE>
+}
+```
+
+> Callback Structure with details
+
+```json
+{
+	"API" : <STR:API_VERSION>,
+	"CALLBACK" : <STR:CALLBACK_MESSAGE>,
+	"DETAILS" : <OBJ:DETAILS>
+}
+```
+
 # REST API Requests
 
 ## Engine : Init
-
-> No result
-
-> Error Code 
 
 Create the I/O devices.
 
@@ -72,23 +85,14 @@ Create the I/O devices.
 
 `GET http://InfiniTweak/api/engine/init`
 
+### Result
+
+None
+
+### Error
+
 
 ## Engine : Start
-
-
-> Result
-
-```
-None
-```
-
-> Errors
- 
-```
-ENGINE_CLOSED: The engine is closed
-UNKNOWN_ERROR
-
-```
 
 
 Start the audio rendering process
@@ -97,22 +101,17 @@ Start the audio rendering process
 
 `GET http://InfiniTweak/api/engine/start`
 
-## Engine : Pause
+### Result
 
-
-> Result
-
-```
 None
-```
 
-> Errors
- 
-```
-ENGINE_CLOSED: The engine is currently closed
-UNKNOWN_ERROR
+### Error
 
-```
+Error | Reason
+--------- | ------- 
+`ENGINE_CLOSED` | The engine is closed
+
+## Engine : Pause
 
 
 Pause the audio rendering process
@@ -121,21 +120,22 @@ Pause the audio rendering process
 
 `GET http://InfiniTweak/api/engine/pause`
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`ENGINE_CLOSED` | The engine is closed
+
+
+
+
 ## Engine : Close
 
-
-> Result
-
-```
-None
-```
-
-> Errors
- 
-```
-UNKNOWN_ERROR
-
-```
+<aside class="warning">Doesn't work</aside>
 
 Stop the engine and remove all the I/O devices.
 
@@ -143,7 +143,15 @@ Stop the engine and remove all the I/O devices.
 
 `GET http://InfiniTweak/api/engine/close`
 
-<aside class="warning">Doesn't work</aside>
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
 
 
 ## Files : Plugins
@@ -153,17 +161,28 @@ Stop the engine and remove all the I/O devices.
 > Result
 
 ```json
-{
-	
-}
+[
+    {
+      "midi.ins": 0,
+      "type": 1,
+      "name": "Bypass",
+      "audio.ins": 1,
+      "parameters.outs": 0,
+      "filename": "",
+      "API": 6,
+      "midi.outs": 0,
+      "build": 2,
+      "uniqueId": 0,
+      "audio.outs": 1,
+      "label": "bypass",
+      "parameters.ins": 0,
+      "maker": "falkTX",
+      "hints": 2
+    }
+]
 ```
 
-> Errors
- 
-```
-UNKNOWN_ERROR
 
-```
 
 Get all the plugins located in the device drive.
 
@@ -171,18 +190,34 @@ Get all the plugins located in the device drive.
 
 `GET http://InfiniTweak/api/files/plugins`
 
+### Result
 
+Parameter | Type | Description
+--------- | ------- | -----------
+`midi.ins` | `Int` | 
+`type` | `Int` | 
+`name` | `Str` | 
+`audio.ins` | `Int` |
+`parameters.out` | `Int` |
+`filename` | `Str` |
+`API` | `Int` |
+`midi.outs` | `Int` |
+`build` | `Int` |
+`uniqueId` | `Int` |
+`audio.outs` | `Int` |
+`label` | `Str` |
+`parameters.ins` | `Int` |
+`maker` | `Str` |
+`hints` | `Int` |
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
 
 ## Plugin : Add 
 
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
 
 Load and add a plugin to the patchbay
 
@@ -202,16 +237,17 @@ Parameter | Type | Description
 `label` | `Str` |
 `uniqueId` | `Int`
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 ## Plugin : Remove 
-
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
 
 Remove a plugin from the patchbay 
 
@@ -219,26 +255,26 @@ Remove a plugin from the patchbay
 
 `DELETE http://InfiniTweak/api/plugins/<pluginId>`
 
-#### Query Parameters
-
-
+#### URL
 
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `pluginId` | `Int` | 
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 
 ## Plugin : Info
 
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
 
 Get info on a plugin
 
@@ -248,22 +284,23 @@ Get info on a plugin
 
 #### Query Parameters
 
+##### URL
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `pluginId` | Int | 
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 ## Plugin : Set parameter value
-
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
-
 
 ### HTTP Request
 
@@ -283,16 +320,19 @@ Parameter | Type | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `value` | `Int` | 
+
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 ## Plugin : Show UI
 
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
 
 Show a plugin's UI
 
@@ -303,21 +343,25 @@ Show a plugin's UI
 #### Query Parameters
 
 
+##### URL
+
 Parameter | Type | Description
 --------- | ------- | -----------
 `pluginId` | `Int` | 
 
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 ## Patchbay : Connect
 
-
-> The result if it works : 
-
-```json
-{
-	
-}
-```
 
 Connect two devices/plugins
 
@@ -327,6 +371,8 @@ Connect two devices/plugins
 
 #### Query Parameters
 
+##### BODY
+
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -335,18 +381,21 @@ Parameter | Type | Description
 `clientIdB` | `Int`
 `portIdB` | `Int`
 
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
 
 
 ## Patchbay : Disconnect
 
 
-> The result if it works : 
 
-```json
-{
-	
-}
-```
 
 Remove a connection between two devices/plugins
 
@@ -356,16 +405,44 @@ Remove a connection between two devices/plugins
 
 #### Query Parameters
 
+##### BODY
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `connectionId`| `Int` | 
 
 
+### Results
+
+None
+
+### Errors
+
+Error | Reason 
+--------- | ------- 
+`UNKNOWN_ERROR` |  | 
 
 
 
 
 
+
+# WebSocket Callback
+
+
+
+## Plugin : Added
+
+### Callback Message
+```
+PLUGIN_ADDED
+```
+
+#### Results
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId`| `Int` | 
+`pluginName`| `Int` | 
 
 
