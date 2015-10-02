@@ -87,15 +87,28 @@
 
 <h2 id="callback-structure">Callback Structure</h2>
 
+<blockquote>
+<p>Callback Structure without details</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"CALLBACK"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:CALLBACK_MESSAGE&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Callback Structure with details</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"API"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:API_VERSION&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"CALLBACK"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:CALLBACK_MESSAGE&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"DETAILS"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OBJ:DETAILS&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h1 id="rest-api-requests">REST API Requests</h1>
 
 <h2 id="engine-init">Engine : Init</h2>
-
-<blockquote>
-<p>No result</p>
-
-<p>Error Code </p>
-</blockquote>
 
 <p>Create the I/O devices.</p>
 
@@ -103,21 +116,13 @@
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/init</code></p>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
 <h2 id="engine-start">Engine : Start</h2>
-
-<blockquote>
-<p>Result</p>
-</blockquote>
-<pre class="highlight plaintext"><code>None
-</code></pre>
-
-<blockquote>
-<p>Errors</p>
-</blockquote>
-<pre class="highlight plaintext"><code>ENGINE_CLOSED: The engine is closed
-UNKNOWN_ERROR
-
-</code></pre>
 
 <p>Start the audio rendering process</p>
 
@@ -125,21 +130,25 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/start</code></p>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ENGINE_CLOSED</code></td>
+<td>The engine is closed</td>
+</tr>
+</tbody></table>
+
 <h2 id="engine-pause">Engine : Pause</h2>
-
-<blockquote>
-<p>Result</p>
-</blockquote>
-<pre class="highlight plaintext"><code>None
-</code></pre>
-
-<blockquote>
-<p>Errors</p>
-</blockquote>
-<pre class="highlight plaintext"><code>ENGINE_CLOSED: The engine is currently closed
-UNKNOWN_ERROR
-
-</code></pre>
 
 <p>Pause the audio rendering process</p>
 
@@ -147,20 +156,27 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/pause</code></p>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ENGINE_CLOSED</code></td>
+<td>The engine is closed</td>
+</tr>
+</tbody></table>
+
 <h2 id="engine-close">Engine : Close</h2>
 
-<blockquote>
-<p>Result</p>
-</blockquote>
-<pre class="highlight plaintext"><code>None
-</code></pre>
-
-<blockquote>
-<p>Errors</p>
-</blockquote>
-<pre class="highlight plaintext"><code>UNKNOWN_ERROR
-
-</code></pre>
+<aside class="warning">Doesn&rsquo;t work</aside>
 
 <p>Stop the engine and remove all the I/O devices.</p>
 
@@ -168,24 +184,49 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/close</code></p>
 
-<aside class="warning">Doesn&rsquo;t work</aside>
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h2 id="files-plugins">Files : Plugins</h2>
 
 <blockquote>
 <p>Result</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"midi.ins"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bypass"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"audio.ins"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parameters.outs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"API"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"midi.outs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"audio.outs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bypass"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parameters.ins"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"falkTX"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hints"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-
-<blockquote>
-<p>Errors</p>
-</blockquote>
-<pre class="highlight plaintext"><code>UNKNOWN_ERROR
-
-</code></pre>
 
 <p>Get all the plugins located in the device drive.</p>
 
@@ -193,15 +234,107 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">GET http://InfiniTweak/api/files/plugins</code></p>
 
+<h3 id="result">Result</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">midi.ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">audio.ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">parameters.out</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">filename</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">API</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">midi.outs</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">build</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">uniqueId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">audio.outs</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">label</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">parameters.ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">maker</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">hints</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="plugin-add">Plugin : Add</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Load and add a plugin to the patchbay</p>
 
@@ -247,15 +380,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="plugin-remove">Plugin : Remove</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Remove a plugin from the patchbay </p>
 
@@ -263,7 +406,7 @@ UNKNOWN_ERROR
 
 <p><code class="prettyprint">DELETE http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
 
-<h4 id="query-parameters">Query Parameters</h4>
+<h4 id="url">URL</h4>
 
 <table><thead>
 <tr>
@@ -279,15 +422,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="plugin-info">Plugin : Info</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Get info on a plugin</p>
 
@@ -296,6 +449,8 @@ UNKNOWN_ERROR
 <p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
 
 <h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="url">URL</h5>
 
 <table><thead>
 <tr>
@@ -311,15 +466,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="plugin-set-parameter-value">Plugin : Set parameter value</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -364,15 +529,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="plugin-show-ui">Plugin : Show UI</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Show a plugin&rsquo;s UI</p>
 
@@ -381,6 +556,8 @@ UNKNOWN_ERROR
 <p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;/UI</code></p>
 
 <h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="url">URL</h5>
 
 <table><thead>
 <tr>
@@ -396,15 +573,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="patchbay-connect">Patchbay : Connect</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Connect two devices/plugins</p>
 
@@ -413,6 +600,8 @@ UNKNOWN_ERROR
 <p><code class="prettyprint">POST http://InfiniTweak/api/patchbay/connections</code></p>
 
 <h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="body">BODY</h5>
 
 <table><thead>
 <tr>
@@ -443,15 +632,25 @@ UNKNOWN_ERROR
 </tr>
 </tbody></table>
 
+<h3 id="result">Result</h3>
+
+<p>None</p>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="patchbay-disconnect">Patchbay : Disconnect</h2>
-
-<blockquote>
-<p>The result if it works : </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>Remove a connection between two devices/plugins</p>
 
@@ -460,6 +659,8 @@ UNKNOWN_ERROR
 <p><code class="prettyprint">DELETE http://InfiniTweak/api/patchbay/connections</code></p>
 
 <h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="body">BODY</h5>
 
 <table><thead>
 <tr>
@@ -470,6 +671,53 @@ UNKNOWN_ERROR
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">connectionId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="results">Results</h3>
+
+<p>None</p>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN_ERROR</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h1 id="websocket-callback">WebSocket Callback</h1>
+
+<h2 id="plugin-added">Plugin : Added</h2>
+
+<h3 id="callback-message">Callback Message</h3>
+<pre class="highlight plaintext"><code>PLUGIN_ADDED
+</code></pre>
+
+<h4 id="results">Results</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">pluginName</code></td>
 <td><code class="prettyprint">Int</code></td>
 <td></td>
 </tr>
