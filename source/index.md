@@ -8,9 +8,6 @@ language_tabs:
 toc_footers:
 
 
-includes:
-  - errors
-
 search: true
 ---
 
@@ -18,82 +15,295 @@ search: true
 
 Welcome to the InfiniTweak API !
 
-# Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
 
 # REST API Requests
 
-## Get All Kittens
+## Engine : Init
 
 
 
 > The result if it works : 
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+	
+}
 ```
 
-This endpoint retrieves all kittens.
+Create the I/O devices.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://InfiniTweak/api/engine/init`
 
-### Query Parameters
 
-Parameter | Default | Description
+## Engine : Start
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Start the audio rendering process
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/engine/start`
+
+## Engine : Pause
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Pause the audio rendering process
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/engine/pause`
+
+## Engine : Pause
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Stop the engine and remove all the I/O devices.
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/engine/close`
+
+
+
+
+## Files : Plugins
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Get all the plugins located in the device drive.
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/files/plugins`
+
+
+
+## Plugin : Add 
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Load and add a plugin to the patchbay
+
+### HTTP Request
+
+`POST http://InfiniTweak/api/plugins`
+
+#### Query Parameters
+
+##### Body
+
+Parameter | Type | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+`build` | `Int` | 
+`type` | `Int` | 
+`filename` | `Str` | 
+`label` | `Str` |
+`uniqueId` | `Int`
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+## Plugin : Remove 
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Remove a plugin from the patchbay 
+
+### HTTP Request
+
+`DELETE http://InfiniTweak/api/plugins/<pluginId>`
+
+#### Query Parameters
+
+
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | `Int` | 
+
+
+## Plugin : Info
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Get info on a plugin
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/plugins/<pluginId>`
+
+#### Query Parameters
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | Int | 
+
+## Plugin : Set parameter value
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+
+### HTTP Request
+
+`PUT http://InfiniTweak/api/plugins/<pluginId>/<parameter>`
+
+#### Query Parameters
+
+##### URL
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | `Int` | 
+`parameter` | <ul><li>`active` <li> `volume` <li> `<Int:parameterId>`</ul> 
+
+##### BODY
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`value` | `Int` | 
+## Plugin : Show UI
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Show a plugin's UI
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/plugins/<pluginId>/UI`
+
+#### Query Parameters
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | `Int` | 
+
+
+## Patchbay : Connect
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Connect two devices/plugins
+
+### HTTP Request
+
+`POST http://InfiniTweak/api/patchbay/connections`
+
+#### Query Parameters
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`clientIdA` | `Int` | 
+`portIdA` | `Int`
+`clientIdB` | `Int`
+`portIdB` | `Int`
+
+
+
+## Patchbay : Disconnect
+
+
+> The result if it works : 
+
+```json
+{
+	
+}
+```
+
+Remove a connection between two devices/plugins
+
+### HTTP Request
+
+`DELETE http://InfiniTweak/api/patchbay/connections`
+
+#### Query Parameters
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`connectionId`| `Int` | 
+
+
+
+
+
+
+
 
 
