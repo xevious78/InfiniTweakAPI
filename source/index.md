@@ -1,9 +1,6 @@
 ---
 title: InfiniTweak API Reference
 
-language_tabs:
-  - shell
-
 
 toc_footers:
 
@@ -79,7 +76,19 @@ Create the I/O devices.
 ## Engine : Start
 
 
-> No result
+> Result
+
+```
+None
+```
+
+> Errors
+ 
+ 
+Code | Meaning | Reason
+--------- | ------- | -----------
+`200` | `Success` | 
+
 
 Start the audio rendering process
 
