@@ -17,12 +17,12 @@ Welcome to the InfiniTweak API !
 ## Response Structure
 
 
-> Successful query without response 
+> Successful query without result 
 
 ```json
 {
 	"API" : <STR:API_VERSION>,
-	"SUCCESSFUL" : TRUE
+	"SUCCESSFUL" : true
 }
 ```
 
@@ -31,7 +31,7 @@ Welcome to the InfiniTweak API !
 ```json
 {
 	"API" : <STR:API_VERSION>,
-	"SUCCESSFUL" : TRUE,
+	"SUCCESSFUL" : true,
 	"RESULT" : <OBJ:RESULT>
 }
 ```
@@ -43,7 +43,7 @@ Welcome to the InfiniTweak API !
 ```json
 {
 	"API" : <STR:API_VERSION>,
-	"RESULT" : FALSE,
+	"RESULT" : false,
 	"REASON" : <STR:ERROR>
 }
 ```
@@ -100,13 +100,20 @@ Start the audio rendering process
 ## Engine : Pause
 
 
-> The result if it works : 
+> Result
 
-```json
-{
-	
-}
 ```
+None
+```
+
+> Errors
+ 
+```
+ENGINE_CLOSED: The engine is currently closed
+UNKNOWN_ERROR
+
+```
+
 
 Pause the audio rendering process
 
@@ -117,12 +124,17 @@ Pause the audio rendering process
 ## Engine : Close
 
 
-> The result if it works : 
+> Result
 
-```json
-{
-	
-}
+```
+None
+```
+
+> Errors
+ 
+```
+UNKNOWN_ERROR
+
 ```
 
 Stop the engine and remove all the I/O devices.
@@ -131,18 +143,26 @@ Stop the engine and remove all the I/O devices.
 
 `GET http://InfiniTweak/api/engine/close`
 
-
+<aside class="warning">Doesn't work</aside>
 
 
 ## Files : Plugins
 
 
-> The result if it works : 
+
+> Result
 
 ```json
 {
 	
 }
+```
+
+> Errors
+ 
+```
+UNKNOWN_ERROR
+
 ```
 
 Get all the plugins located in the device drive.
