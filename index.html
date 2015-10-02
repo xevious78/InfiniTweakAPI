@@ -44,149 +44,367 @@
 
 <p>Welcome to the InfiniTweak API !</p>
 
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
 <h1 id="rest-api-requests">REST API Requests</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
+<h2 id="engine-init">Engine : Init</h2>
 
 <blockquote>
 <p>The result if it works : </p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>Create the I/O devices.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET http://InfiniTweak/api/engine/init</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h2 id="engine-start">Engine : Start</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Start the audio rendering process</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/engine/start</code></p>
+
+<h2 id="engine-pause">Engine : Pause</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Pause the audio rendering process</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/engine/pause</code></p>
+
+<h2 id="engine-pause">Engine : Pause</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Stop the engine and remove all the I/O devices.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/engine/close</code></p>
+
+<h2 id="files-plugins">Files : Plugins</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get all the plugins located in the device drive.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/files/plugins</code></p>
+
+<h2 id="plugin-add">Plugin : Add</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Load and add a plugin to the patchbay</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://InfiniTweak/api/plugins</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="body">Body</h5>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code class="prettyprint">build</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code class="prettyprint">type</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">filename</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">label</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">uniqueId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<h2 id="plugin-remove">Plugin : Remove</h2>
 
-          <h1 id="errors">Errors</h1>
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>Remove a plugin from the patchbay </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="plugin-info">Plugin : Info</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get info on a plugin</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td>Int</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="plugin-set-parameter-value">Plugin : Set parameter value</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://InfiniTweak/api/plugins/&lt;pluginId&gt;/&lt;parameter&gt;</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<h5 id="url">URL</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td><code class="prettyprint">parameter</code></td>
+<td><ul><li><code class="prettyprint">active</code> <li> <code class="prettyprint">volume</code> <li> <code class="prettyprint">&lt;Int:parameterId&gt;</code></ul></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h5 id="body">BODY</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">value</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="plugin-show-ui">Plugin : Show UI</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Show a plugin&rsquo;s UI</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;/UI</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="patchbay-connect">Patchbay : Connect</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Connect two devices/plugins</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://InfiniTweak/api/patchbay/connections</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">clientIdA</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td><code class="prettyprint">portIdA</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td><code class="prettyprint">clientIdB</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td><code class="prettyprint">portIdB</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
+</tbody></table>
+
+<h2 id="patchbay-disconnect">Patchbay : Disconnect</h2>
+
+<blockquote>
+<p>The result if it works : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Remove a connection between two devices/plugins</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE http://InfiniTweak/api/patchbay/connections</code></p>
+
+<h4 id="query-parameters">Query Parameters</h4>
+
+<table><thead>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td><code class="prettyprint">connectionId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
 </tr>
 </tbody></table>
 
