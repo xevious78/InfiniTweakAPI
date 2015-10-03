@@ -87,7 +87,13 @@ Create the I/O devices.
 
 ### Result
 
-None
+#### WebSocket Callback
+
+`ENGINE_INITIALIZED` <br />
+`PATCHBAY_CLIENT_ADDED` : I/O devices client
+<br /> 
+`PATCHBAY_PORT_ADDED` : I/O devices client port
+
 
 ### Error
 
@@ -122,7 +128,7 @@ Pause the audio rendering process
 
 ### Result
 
-None
+
 
 ### Error
 
@@ -237,7 +243,10 @@ Parameter | Type | Description
 
 ### Result
 
-None
+#### WebSocket Callback
+
+`PLUGIN_ADDED` <br />
+`PATCHBAY_CLIENT_ADDED` <br /> 
 
 ### Error
 
@@ -291,7 +300,66 @@ Parameter | Type | Description
 
 ### Result
 
-None
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`info` | `Obj` | 
+`parameterCount` | `Obj` | 
+`midiPortCount` | `Obj` | 
+`audioPortCount` | `Obj` |
+`programCount` | `Int` |
+`currentProgram` | `Int` | <ul><li>`-1` : No program</ul>
+
+<br />
+
+
+`info`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`category` | `Int` | 
+`name` | `Str` | 
+`copyright` | `Str` | 
+`optionsEnabled` | `Int` |
+`filename` | `Str` |
+`iconName` | `Str` | 
+`uniqueId` | `Int` | 
+`optionsAvailable` | `Int` | 
+`label` | `Str` | 
+`type` | `Int` | 
+`maker` | `Str` | 
+`hints` | `Int` | 
+
+<br />
+
+
+`parameterCount`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`outs` | `Int` | 
+`ins` | `Int` | 
+
+<br />
+
+
+`midiPortCount`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`outs` | `Int` | 
+`ins` | `Int` | 
+
+<br />
+
+`audioPortCount`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`outs` | `Int` | 
+`ins` | `Int` | 
+
+
 
 ### Error
 
@@ -299,14 +367,74 @@ Error | Reason
 --------- | ------- 
 `UNKNOWN` | 
 
-## Plugin : Set parameter value
 
-<aside class="warning">Not tested</aside>
+## Plugin : Get parameter info
+
+<aside class="warning">Cannot get anything except a parameterId (no volume, active, ...)</aside>
 
 
 ### HTTP Request
 
-`PUT http://InfiniTweak/api/plugins/<pluginId>/<parameter>`
+`GET http://InfiniTweak/api/plugins/<pluginId>/parameters/<parameter>`
+
+
+#### URL Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | `Int` | 
+`parameter` | <ul>`<Int:parameterId>`</ul> 
+
+
+### Result
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`info` | `Obj` | 
+`ranges` | `Obj` | 
+`currentValue` | `Int` | 
+`defaultValue` | `Int` |
+`internalValue` | `Int` |
+`currentValue` | `Int` | 
+<br />
+
+`info`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`name` | `Str` | 
+`symbol` | `Str` | 
+`unit` | `Str` |
+`scalePointCount` | `Int` | 
+
+<br />
+
+`ranges`
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`min` | `Int` | 
+`max` | `Int` | 
+`stepSmall` | `Int` |
+`stepLarge` | `Int` | 
+`step` | `Int` | 
+`def` | `Int` | 
+
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
+
+## Plugin : Set parameter value
+
+
+
+### HTTP Request
+
+`PUT http://InfiniTweak/api/plugins/<pluginId>/parameters/<parameter>`
 
 
 #### URL Parameters
@@ -382,7 +510,9 @@ Parameter | Type | Description
 
 ### Result
 
-None
+#### WebSocket Callback
+
+`PATCHBAY_CONNECTION_ADDED ` <br />
 
 ### Error
 
@@ -411,7 +541,9 @@ Parameter | Type | Description
 
 ### Results
 
-None
+#### WebSocket Callback
+
+`PATCHBAY_CONNECTION_REMOVED`
 
 ### Errors
 
@@ -499,6 +631,9 @@ Parameter | Type | Description
 `portId`| `Int` : Port ID | 
 `clientId`| `Int` | 
 `portFlag`| `Int` | Compatibility 
+
+<aside class="warning">Doesn't work</aside>
+
 
 ## Patchbay : Connection Added
 
