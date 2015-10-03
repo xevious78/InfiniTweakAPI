@@ -118,7 +118,12 @@
 
 <h3 id="result">Result</h3>
 
-<p>None</p>
+<h4 id="websocket-callback">WebSocket Callback</h4>
+
+<p><code class="prettyprint">ENGINE_INITIALIZED</code> <br />
+<code class="prettyprint">PATCHBAY_CLIENT_ADDED</code> : I/O devices client
+<br /> 
+<code class="prettyprint">PATCHBAY_PORT_ADDED</code> : I/O devices client port</p>
 
 <h3 id="error">Error</h3>
 
@@ -157,8 +162,6 @@
 <p><code class="prettyprint">GET http://InfiniTweak/api/engine/pause</code></p>
 
 <h3 id="result">Result</h3>
-
-<p>None</p>
 
 <h3 id="error">Error</h3>
 
@@ -380,7 +383,10 @@
 
 <h3 id="result">Result</h3>
 
-<p>None</p>
+<h4 id="websocket-callback">WebSocket Callback</h4>
+
+<p><code class="prettyprint">PLUGIN_ADDED</code> <br />
+<code class="prettyprint">PATCHBAY_CLIENT_ADDED</code> <br /> </p>
 
 <h3 id="error">Error</h3>
 
@@ -466,7 +472,346 @@
 
 <h3 id="result">Result</h3>
 
-<p>None</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">info</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">parameterCount</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">midiPortCount</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">audioPortCount</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">programCount</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">currentProgram</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td><ul><li><code class="prettyprint">-1</code> : No program</ul></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">info</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">category</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">copyright</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">optionsEnabled</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">filename</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">iconName</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">uniqueId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">optionsAvailable</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">label</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">type</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">maker</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">hints</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">parameterCount</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">outs</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">midiPortCount</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">outs</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">audioPortCount</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">outs</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">ins</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="error">Error</h3>
+
+<table><thead>
+<tr>
+<th>Error</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">UNKNOWN</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="plugin-get-parameter-info">Plugin : Get parameter info</h2>
+
+<aside class="warning">Cannot get anything except a parameterId (no volume, active, &hellip;)</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://InfiniTweak/api/plugins/&lt;pluginId&gt;/parameters/&lt;parameter&gt;</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">pluginId</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">parameter</code></td>
+<td><ul><code class="prettyprint">&lt;Int:parameterId&gt;</code></ul></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="result">Result</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">info</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">ranges</code></td>
+<td><code class="prettyprint">Obj</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">currentValue</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">defaultValue</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">internalValue</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">currentValue</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">info</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">symbol</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">unit</code></td>
+<td><code class="prettyprint">Str</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">scalePointCount</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><br /></p>
+
+<p><code class="prettyprint">ranges</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">min</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">max</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">stepSmall</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">stepLarge</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">step</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">def</code></td>
+<td><code class="prettyprint">Int</code></td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h3 id="error">Error</h3>
 
@@ -484,11 +829,9 @@
 
 <h2 id="plugin-set-parameter-value">Plugin : Set parameter value</h2>
 
-<aside class="warning">Not tested</aside>
-
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT http://InfiniTweak/api/plugins/&lt;pluginId&gt;/&lt;parameter&gt;</code></p>
+<p><code class="prettyprint">PUT http://InfiniTweak/api/plugins/&lt;pluginId&gt;/parameters/&lt;parameter&gt;</code></p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -630,7 +973,9 @@
 
 <h3 id="result">Result</h3>
 
-<p>None</p>
+<h4 id="websocket-callback">WebSocket Callback</h4>
+
+<p><code class="prettyprint">PATCHBAY_CONNECTION_ADDED</code> <br /></p>
 
 <h3 id="error">Error</h3>
 
@@ -672,7 +1017,9 @@
 
 <h3 id="results">Results</h3>
 
-<p>None</p>
+<h4 id="websocket-callback">WebSocket Callback</h4>
+
+<p><code class="prettyprint">PATCHBAY_CONNECTION_REMOVED</code></p>
 
 <h3 id="errors">Errors</h3>
 
@@ -810,6 +1157,8 @@
 <td>Compatibility</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">Doesn&rsquo;t work</aside>
 
 <h2 id="patchbay-connection-added">Patchbay : Connection Added</h2>
 
