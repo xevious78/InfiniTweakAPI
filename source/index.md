@@ -489,6 +489,32 @@ Error | Reason
 --------- | ------- 
 `UNKNOWN` | 
 
+## Plugin : Stop VNC
+
+Stop streaming a plugin's UI via VNC/WebSocket
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/plugins/<pluginId>/stopVNC`
+
+
+#### URL Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`pluginId` | `Int` | 
+
+
+### Result
+
+None
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
 ## Patchbay : Connect
 
 
