@@ -106,6 +106,31 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<h2 id="websocket-resp-api-request-structure">WebSocket RESP Api Request Structure</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"METHOD"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:METHOD&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"URI"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;STR:URI&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"DATA"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OBJ:DATA&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"METHOD"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"URI"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/plugins/0/parameters/1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"DATA"</span><span class="w"> </span><span class="p">:</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">5.5</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h1 id="rest-api-requests">REST API Requests</h1>
 
 <h2 id="engine-init">Engine : Init</h2>
@@ -829,7 +854,7 @@
 
 <h2 id="plugin-set-parameter-value">Plugin : Set parameter value</h2>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="http-amp-ws-request">HTTP &amp; WS Request</h3>
 
 <p><code class="prettyprint">PUT http://InfiniTweak/api/plugins/&lt;pluginId&gt;/parameters/&lt;parameter&gt;</code></p>
 
@@ -865,7 +890,7 @@
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">value</code></td>
-<td><code class="prettyprint">Int</code></td>
+<td><code class="prettyprint">Float</code></td>
 <td></td>
 </tr>
 </tbody></table>
