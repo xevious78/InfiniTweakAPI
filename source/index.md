@@ -75,6 +75,31 @@ Code | Meaning | Reason
 }
 ```
 
+## WebSocket RESP Api Request Structure
+
+> Request
+
+```json
+{
+	"METHOD" : <STR:METHOD>,
+	"URI" : <STR:URI>,
+	"DATA" : <OBJ:DATA>
+}
+```
+
+> Example
+
+```json
+{
+	"METHOD" : "PUT",
+	"URI" : "/api/plugins/0/parameters/1",
+	"DATA" : 
+		{
+			"value" : 5.5
+		}
+}
+```
+
 # REST API Requests
 
 ## Engine : Init
@@ -432,7 +457,7 @@ Error | Reason
 
 
 
-### HTTP Request
+### HTTP & WS Request
 
 `PUT http://InfiniTweak/api/plugins/<pluginId>/parameters/<parameter>`
 
@@ -448,7 +473,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`value` | `Int` | 
+`value` | `Float` | 
 
 ### Result
 
