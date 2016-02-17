@@ -102,6 +102,23 @@ Code | Meaning | Reason
 
 # REST API Requests
 
+## Engine : Is Running ?
+
+Check if the engine is running
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/engine/`
+
+### Result
+
+#### WebSocket Callback
+
+`ENGINE_INITIALIZED` <br />
+`PATCHBAY_CLIENT_ADDED` : I/O devices client
+<br /> 
+`PATCHBAY_PORT_ADDED` : I/O devices client port
+
 ## Engine : Init
 
 Create the I/O devices.
@@ -180,9 +197,10 @@ None
 
 ### Error
 
-Error | Reason
---------- | ------- 
-`UNKNOWN` | 
+Parameter | Type | Description
+--------- | ------- | -----------
+`value` | `Bool` | 
+
 
 
 ## Files : Plugins
@@ -279,12 +297,26 @@ Error | Reason
 --------- | ------- 
 `UNKNOWN` | 
 
+## Plugin : Remove All Plugins
+
+Remove all plugins from the patchbay. 
+
+### HTTP Request
+
+`DELETE http://InfiniTweak/api/plugins`
+
+
+### Error
+
+Error | Reason
+--------- | ------- 
+`UNKNOWN` | 
+
+
 ## Plugin : Remove 
 
-<aside class="warning">No tested</aside>
 
-
-Remove a plugin from the patchbay 
+Remove a plugin from the patchbay. All the `pluginId` are then reassigned so that there is no gap in the id count.
 
 ### HTTP Request
 
@@ -306,7 +338,6 @@ None
 Error | Reason
 --------- | ------- 
 `UNKNOWN` | 
-
 
 ## Plugin : Info
 
@@ -391,6 +422,24 @@ Parameter | Type | Description
 Error | Reason
 --------- | ------- 
 `UNKNOWN` | 
+
+## Plugin : All Plugin Infos
+
+Get info on all plugins currently in the patchbay
+
+### HTTP Request
+
+`GET http://InfiniTweak/api/plugins/`
+
+
+
+### Result
+
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`result` | `Array of PluginInfo` | See *Plugin : Info*
+
 
 
 ## Plugin : Get parameter info
